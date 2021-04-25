@@ -1,0 +1,68 @@
+run:
+  tests: false
+  skip-dirs:
+    - test/
+
+linters-settings:
+  funlen:
+    lines: 100
+  goimports:
+    local-prefixes: github.com/grafana/stack-state-service
+  golint:
+    min-confidence: 0.8
+  gocognit:
+    min-complexity: 50
+  gomnd:
+    settings:
+      mnd:
+        # the list of enabled checks, see https://github.com/tommy-muehle/go-mnd/#checks for description.
+        checks: argument,case,condition,operation,return
+        ignored-numbers: 0,1
+  misspell:
+    locale: UK
+
+linters:
+  disable-all: true
+  enable:
+    - bodyclose
+    - deadcode
+    - depguard
+    - dogsled
+    - dupl
+    - errcheck
+    - funlen
+    - gochecknoinits
+    - goconst
+    - gocritic
+    - gocyclo
+    - gofmt
+    - goimports
+    - golint
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - lll
+    - misspell
+    - nakedret
+    - rowserrcheck
+    - exportloopref
+    - staticcheck
+    - structcheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - varcheck
+    - whitespace
+    - prealloc
+    - gocognit
+
+issues:
+  # Excluding configuration per-path, per-linter, per-text and per-source
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gomnd
+        - gocognit
